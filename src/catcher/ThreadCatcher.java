@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package catcher;
 
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -15,6 +11,8 @@ public class ThreadCatcher extends Thread{
     
     private int sleep_time;
     private JTextArea textArea;
+    private JTextPane textPane;
+    
     private static boolean haveToRun; //server per uccidere il thread
     
     public ThreadCatcher(JTextArea textArea){
@@ -23,12 +21,26 @@ public class ThreadCatcher extends Thread{
         haveToRun = true;
     }
     
+    public ThreadCatcher(JTextPane textPane){
+        this.sleep_time = 100;
+        this.textPane = textPane;
+        haveToRun = true;
+    }
+    
     @Override
     public void run(){
         while(haveToRun){
-            try{
+            /*try{
                     //btn.setEnabled(false);
                     Catcher.take(textArea);
+                    Thread.currentThread().sleep(sleep_time);
+                }
+                catch(Exception e){
+                    System.err.println(e);
+                }*/
+            try{
+                    //btn.setEnabled(false);
+                    Catcher.prova(textPane);
                     Thread.currentThread().sleep(sleep_time);
                 }
                 catch(Exception e){
