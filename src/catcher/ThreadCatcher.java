@@ -9,7 +9,7 @@ import javax.swing.JTextPane;
  */
 public class ThreadCatcher extends Thread{
     
-    private int sleep_time;
+    private final int sleep_time;
     private JTextArea textArea;
     private JTextPane textPane;
     
@@ -22,7 +22,7 @@ public class ThreadCatcher extends Thread{
     }
     
     public ThreadCatcher(JTextPane textPane){
-        this.sleep_time = 100;
+        this.sleep_time = 60000;
         this.textPane = textPane;
         haveToRun = true;
     }
@@ -49,7 +49,7 @@ public class ThreadCatcher extends Thread{
         }
     }
     
-    public static void kill(){
+    public void kill(){
         haveToRun = false;
     }
 }
